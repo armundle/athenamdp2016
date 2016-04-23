@@ -13,10 +13,22 @@ def bad_request(body=None):
     return response
 
 
+def create_appointment():
+    pass
+
+
 @app.route('/', methods=['GET'])
 def home():
     return render_template('dist/index.html')
 
+
+@app.route('/help', methods=['GET'])
+def help():
+    methods = [{"path": "/", "verb": "/GET"},
+                    {"path": "/info", "verb": "POST"},
+                     {"path": "/appointment", "verb": "GET"}]
+
+    return jsonify(results=methods)
 
 @app.route('/info', methods=['POST'])
 def get_appointment():
