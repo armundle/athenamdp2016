@@ -1,0 +1,18 @@
+{
+  "preferences": {
+  "calendar":[{
+      "day": "monday",
+      "time": "8-11",
+      "date": {
+      "mm": "01",
+      "dd": "03",
+      "yyyy": "2016"
+      }
+  }],
+  "provider": [{"name": "eric cartman"}],
+  "lab": [{"name":"labA"}],
+  "hospital": "abc",
+  "gestationalAge": 3,
+  "risk": "low"
+  }
+}
