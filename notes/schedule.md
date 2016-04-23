@@ -6,3 +6,7 @@
 - Genetic screening
 
 # Visit schedule for first pregnancy
+- every 4 weeks 0-28 weeks
+- every 2 weeks 28-36 weeks
+- every week 36-. weeks
+- total of 16
