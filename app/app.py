@@ -13,13 +13,13 @@ def bad_request(body=None):
     return response
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
 
 
 @app.route('/info', methods=['POST'])
-def get_patient_info():
+def get_appointment():
     try:
         requestBody = request.get_json()
         if "preferences" in requestBody.keys():
@@ -36,7 +36,7 @@ def get_patient_info():
     try:
         response = {}
         response['test'] = ["February 30 2016", "March 29 2016"]
-        return jsonify(result)
+        return jsonify(response)
     except Exception as e:
         return jsonify({"error": traceback.format_exc(e)})
 
