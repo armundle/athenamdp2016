@@ -15,7 +15,7 @@ def bad_request(body=None):
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    return render_template('dist/index.html')
 
 
 @app.route('/info', methods=['POST'])
