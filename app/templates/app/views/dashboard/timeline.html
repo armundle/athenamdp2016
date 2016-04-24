@@ -1,0 +1,31 @@
+<div ng-controller="TimelineCtrl">
+	<!--<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Profile/Settings</a>
+	<h2>Reports <small>Work with Chart.js and D3</small></h2>-->
+	<!--<span class="glyphicon glyphicon-dashboard bg-fade"></span>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Add Charts here</h1>
+			<p>You can use C3.js or Chart.js</p>
+			<p>
+				<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
+			</p>-->
+    <button class="pull-right btn btn-primary btn-outline btn-rounded" ng-click="add()">Book Next Appointment</button> 
+    <h2> Yearly OBGYN appointments </h2>
+     <div class="jumbotron">
+    <div class="container">
+    <timeline>
+    <timeline-event ng-repeat="mydat in mydata.appointments" side="alternate">
+      <timeline-badge ng-class={{badgeClass}}>
+        <i ng-class={{badgeClass}}></i>
+      </timeline-badge>
+      <timeline-panel ng-class={{badgeInfo}}>
+        <timeline-heading>
+          <h6>{{mydat.summary}}</h6>
+        </timeline-heading>
+        <p>{{mydat.appointment_date.date}}</p>
+      </timeline-panel>
+    </timeline-event>
+  </timeline>
+      </div>
+    </div>
+</div>

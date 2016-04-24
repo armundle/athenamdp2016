@@ -11,6 +11,7 @@
 angular
   .module('yapp', [
     'ui.router',
+    'angular-timeline',
     'ngAnimate'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
@@ -41,10 +42,11 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/overview.html'
           })
-          .state('reports', {
-            url: '/reports',
+          .state('timeline', {
+            url: '/timeline',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/reports.html'
+            templateUrl: 'views/dashboard/timeline.html',
+            controller: 'TimelineCtrl'
           });
 
   });
