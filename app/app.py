@@ -6,8 +6,10 @@ import json
 import calendar
 from datetime import datetime
 from shutil import copyfile
+from flask.ext.cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 def bad_request(body=None):
