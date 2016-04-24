@@ -5,6 +5,7 @@ from athena import extract_time, format_12, get_datetime, format_date
 import json
 import calendar
 from datetime import datetime
+from shutil import copyfile
 
 app = Flask(__name__)
 
@@ -86,7 +87,7 @@ def refactor(data):
 
 @app.route('/timeline', methods=['GET'])
 def timeline():
-    with open("timeline_sample_1.json") as json_file:
+    with open("timeline_booked.json") as json_file:
         json_data = json.load(json_file)
         return jsonify(json_data)
 
@@ -98,6 +99,7 @@ def home():
 
 @app.route('/reset', methods=['GET'])
 def reset():
+    copyfile('timeline_original.json', 'timeline_booked.json')
     return jsonify(result=reset_appointment())
 
 
@@ -130,12 +132,12 @@ def book():
     #print TIMELINE
 
 
-    with open("timeline_sample_0.json") as fr:
+    with open("timeline_original.json") as fr:
         data = json.load(fr)
         data['appointments'].append(TIMELINE)
         ref_data = refactor(data)
 
-    with open("timeline_sample_1.json", 'w') as fw:
+    with open("timeline_booked.json", 'w') as fw:
         print type(ref_data)
         json.dump(ref_data, fw)
 
