@@ -146,7 +146,7 @@ def book():
 
     print r
 
-    return jsonify(result = ref_data)
+    return jsonify(result = r)
 
 
 @app.route('/booked', methods=['GET'])
@@ -190,7 +190,7 @@ def help():
 
     return jsonify(results=methods)
 
-@app.route('/info', methods=['POST'])
+@app.route('/info', methods=['GET'])
 def info():
     try:
         requestBody = request.get_json()
