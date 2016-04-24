@@ -36,8 +36,8 @@ def format_12(time):
 
     return (str(h) + ":" + str(m).zfill(2) + " " + suffix)
 
+
 def get_open_appts(dates):
-#def get_open_appts():
 
     dateformat = '%m/%d/%Y'
     response_dateformat = '%Y-%m-%d'
@@ -57,6 +57,7 @@ def get_open_appts(dates):
         })
 
         for a in appt_day['appointments']:
+            print a
             provider_t = extract_time(a['starttime'])
             patient_t = (d['start_time']['hour']*60 + d['start_time']['minute'])
             provider_delta = int(a['duration'])
@@ -71,37 +72,53 @@ def get_open_appts(dates):
                 day = calendar.day_name[date_unfmt.weekday()]
                 time = a['starttime']
                 return_time = format_12(time)
-                open_appts.append([{'date': str(return_date) + " " + return_time},
-                                  {'day': day}])
-
-            #if int(a['starttime'].split(':')[0]) <= d['start']['hour']:
-
-
-        #print "OPEN APPTS"
-        #print open_appts
-
-
-    #d1_start = datetime.datetime(2016, 4, 24)
-    #d1_end = datetime.datetime(2016, 4, 30)
-
-    #open_appts = api.GET('/appointments/open', {
-        #'departmentid': 1,
-        #'startdate': d1_start.strftime(dateformat),
-        #'enddate': d1_end.strftime(dateformat),
-        #'limit': 3,
-        #'appointmenttypeid': 82,
-        #'providerid': 71
-    #})
-
-    ## change the keys in appt to make it usable in scheduling
-    #appt = open_appts['appointments'][0]
-    #print 'Open appointment:'
-    #print appt
-    ##appt['appointmenttime'] = appt.pop('starttime')
-    ##appt['appointmentdate'] = appt.pop('date')
-    #print appt.pop('starttime')
-    #print appt.pop('date')
-    #print appt.pop('duration')
-
-    #return open_appts['appointments']
+                open_appts.append({'date': (str(return_date) + " " + return_time),
+                                  'day': day,
+                                  '_appointment_id': a['appointmentid']})
     return open_appts
+
+
+def book_appointment(appointment):
+
+    appointment_id = appointment['_appointment_id']
+    print appointment_id
+    appointment_info = {
+        'appointmenttypeid': 82,
+        'departmentid': 1,
+        'patientid': 22607
+    }
+
+    book = api.PUT(path_join('/appointments',
+                               appointment_id), appointment_info)
+    print 'Response to booking appointment:'
+    return {'response': book}
+
+
+
+def get_booked_appointment():
+
+    patientid = 22607
+
+    booked = api.GET(path_join('/patients', patientid,
+                               '/appointments'))
+
+    return booked
+
+
+def reset_appointment():
+    appointments = get_booked_appointment()['appointments']
+    #appointmentids = []
+    patientid = 22607
+    response = []
+    for a in appointments:
+        appointmentid = a['appointmentid']
+        appointment_info = {
+            'appointmentid': appointmentid,
+            'patientid': 22607,
+            'cancellationreason': "hello"
+        }
+
+        response.append(api.PUT(path_join('/appointments', appointmentid,
+                                '/cancel'), appointment_info))
+
+    return response
