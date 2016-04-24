@@ -65,8 +65,8 @@ def create_appointment():
 
     return get_open_appts(dates)
 
-@app.route('/alfred', methods=['GET'])
-def alfred():
+@app.route('/timeline', methods=['GET'])
+def timeline():
     with open("timeline_sample_1.json") as json_file:
         json_data = json.load(json_file)
         return jsonify(json_data)
@@ -106,7 +106,6 @@ def booked():
 @app.route('/appointment', methods=['GET'])
 def athena():
     appt = create_appointment()
-    print appt
     return jsonify(result=appt)
 
 
@@ -119,7 +118,7 @@ def help():
     return jsonify(results=methods)
 
 @app.route('/info', methods=['POST'])
-def get_appointment():
+def info():
     try:
         requestBody = request.get_json()
         if "preferences" in requestBody.keys():
