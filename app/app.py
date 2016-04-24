@@ -135,8 +135,9 @@ def book():
         data['appointments'].append(TIMELINE)
         ref_data = refactor(data)
 
-    with open("timeline_sample_1.json") as fw:
-        fw.write(ref_data)
+    with open("timeline_sample_1.json", 'w') as fw:
+        print type(ref_data)
+        json.dump(ref_data, fw)
 
     r = {'appointment_date' : appointment_date,
          'appointment_id' : appointment_id}
