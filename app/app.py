@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, render_template, Response, request
 import traceback
 from athena import get_open_appts, book_appointment, get_booked_appointment, reset_appointment
-from athena import extract_time, format_12
+from athena import extract_time, format_12, get_datetime, format_date
 import json
+import calendar
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -16,7 +18,7 @@ def bad_request(body=None):
     return response
 
 
-APPT = {
+TIMELINE = {
         "summary": "Your OBGYN appointment with Dr. Bonnie Buttercup is scheduled for May 1st 2016 at 8:30 am.",
         #"appointment_date": {
             #"day": "monday",
@@ -51,7 +53,7 @@ APPT = {
 def create_appointment():
     dates = [{'start_time' : {'year': 2016,
                         'month': 04,
-                        'day': 24,
+                        'day': 26,
                         'hour': 11,
                         'minute': 15}
              },
@@ -64,6 +66,23 @@ def create_appointment():
             ]
 
     return get_open_appts(dates)
+
+
+
+def refactor(data):
+   json_data = dict(data)
+   appt_data = json_data['appointments']
+   all_dates = []
+   date_hash = {}
+   for ind in appt_data:
+       appt_date = datetime.strptime(ind['appointment_date']['date'], '%Y-%m-%d %I:%M %p')
+       date_hash[appt_date] = ind
+   rebuilt_timeline = []
+   for ind_date in sorted(date_hash.keys()):
+       rebuilt_timeline.append(date_hash[ind_date])
+   json_data['appointments'] = rebuilt_timeline
+   return json_data
+
 
 @app.route('/timeline', methods=['GET'])
 def timeline():
@@ -84,23 +103,74 @@ def reset():
 
 @app.route('/book', methods=['GET'])
 def book():
-    appt = book_appointment(create_appointment()[0])
-    date = appt['date']
+    open_appt = create_appointment()
+    if len(open_appt) < 1:
+        return jsonify({'error': "No matching slots"})
+
+    dateformat = '%Y-%m-%d'
+
+    appts = book_appointment(open_appt[0])
+    appt = appts[0]
     time = appt['starttime']
-    print date
-    print time
-    return jsonify(result = appt)
+    date = appt['date']
+    date_str =  str(format_date(dateformat, get_datetime(date)))
+    time_str = str(format_12(time))
+
+    day = calendar.day_name[get_datetime(date).weekday()]
+
+
+    appointment_date = {"day": day,
+                        "date": date_str + " " + time_str}
+
+    appointment_id = appt['appointmentid']
+
+    TIMELINE['appointment_date'] = appointment_date
+    TIMELINE['appointment_id'] = appointment_id
+
+    #print TIMELINE
+
+
+    with open("timeline_sample_0.json") as fr:
+        data = json.load(fr)
+        data['appointments'].append(TIMELINE)
+        ref_data = refactor(data)
+
+    with open("timeline_sample_1.json") as fw:
+        fw.write(ref_data)
+
+    r = {'appointment_date' : appointment_date,
+         'appointment_id' : appointment_id}
+
+    print r
+
+    return jsonify(result = ref_data)
 
 
 @app.route('/booked', methods=['GET'])
 def booked():
-    appt = get_booked_appointment()['appointments'][0]
-    print appt
-    date = appt['date']
+    dateformat = '%Y-%m-%d'
+
+    appts = get_booked_appointment()['appointments']
+    if len(appts) < 1 :
+        return jsonify({})
+    appt  = appts[0]
+
     time = appt['starttime']
-    print date
-    print time
-    return jsonify(result = get_booked_appointment())
+    date = appt['date']
+    date_str =  str(format_date(dateformat, get_datetime(date)))
+    time_str = str(format_12(time))
+
+    day = calendar.day_name[get_datetime(date).weekday()]
+
+
+    appointment_date = {"day": day,
+                        "date": date_str + " " + time_str}
+    print appointment_date
+
+    r = {'appointment_date' : appointment_date,
+         'appointment_id' : appt['appointmentid']}
+    print r
+    return jsonify(result = r)
 
 
 @app.route('/appointment', methods=['GET'])

@@ -37,6 +37,18 @@ def format_12(time):
     return (str(h) + ":" + str(m).zfill(2) + " " + suffix)
 
 
+def get_datetime(date):
+    d = date.split('/')
+    date_unfmt = datetime.datetime(int(d[2]),
+                                    int(d[0]),
+                                    int(d[1]))
+    return date_unfmt
+
+
+def format_date(fmt, d_datetime):
+    return d_datetime.strftime(fmt)
+
+
 def get_open_appts(dates):
 
     dateformat = '%m/%d/%Y'
@@ -57,7 +69,7 @@ def get_open_appts(dates):
         })
 
         for a in appt_day['appointments']:
-            print a
+            #print a
             provider_t = extract_time(a['starttime'])
             patient_t = (d['start_time']['hour']*60 + d['start_time']['minute'])
             provider_delta = int(a['duration'])
@@ -81,7 +93,7 @@ def get_open_appts(dates):
 def book_appointment(appointment):
 
     appointment_id = appointment['_appointment_id']
-    print appointment_id
+    #print appointment_id
     appointment_info = {
         'appointmenttypeid': 82,
         'departmentid': 1,
@@ -90,8 +102,9 @@ def book_appointment(appointment):
 
     book = api.PUT(path_join('/appointments',
                                appointment_id), appointment_info)
-    print 'Response to booking appointment:'
-    return {'response': book}
+    #print 'Response to booking appointment:'
+    #print book
+    return book
 
 
 
