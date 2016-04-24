@@ -77,10 +77,6 @@ def home():
     return render_template('dist/index.html')
 
 
-<<<<<<< HEAD
-@app.route('/athena/get-appointment', methods=['GET'])
-def get_appointment():
-=======
 @app.route('/reset', methods=['GET'])
 def reset():
     return jsonify(result=reset_appointment())
@@ -109,7 +105,6 @@ def booked():
 
 @app.route('/appointment', methods=['GET'])
 def athena():
->>>>>>> armundle
     appt = create_appointment()
     return jsonify(result=appt)
 
