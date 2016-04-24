@@ -14,6 +14,10 @@ def bad_request(body=None):
     return response
 
 
+# get this from timeline
+# input will be a preferences for each appointment required
+# select only one match for each appointment and this will
+# be a list of all the appointment for the patient
 def create_appointment():
     dates = [{'start_time' : {'year': 2016,
                         'month': 04,
@@ -38,9 +42,8 @@ def home():
 
 
 @app.route('/athena/get-appointment', methods=['GET'])
-def athena():
+def get_appointment():
     appt = create_appointment()
-    print appt
     return jsonify(result=appt)
 
 
@@ -53,7 +56,7 @@ def help():
     return jsonify(results=methods)
 
 @app.route('/info', methods=['POST'])
-def get_appointment():
+def info():
     try:
         requestBody = request.get_json()
         if "preferences" in requestBody.keys():
