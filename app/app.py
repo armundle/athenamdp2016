@@ -148,7 +148,7 @@ def book():
 
     print r
 
-    return jsonify(result = r)
+    return jsonify(result = ref_data)
 
 
 @app.route('/booked', methods=['GET'])
@@ -160,20 +160,22 @@ def booked():
         return jsonify({})
     appt  = appts[0]
 
-    time = appt['starttime']
-    date = appt['date']
-    date_str =  str(format_date(dateformat, get_datetime(date)))
-    time_str = str(format_12(time))
+    r = []
+    for appt in appts:
+        time = appt['starttime']
+        date = appt['date']
+        date_str =  str(format_date(dateformat, get_datetime(date)))
+        time_str = str(format_12(time))
 
-    day = calendar.day_name[get_datetime(date).weekday()]
+        day = calendar.day_name[get_datetime(date).weekday()]
 
 
-    appointment_date = {"day": day,
-                        "date": date_str + " " + time_str}
-    print appointment_date
+        appointment_date = {"day": day,
+                            "date": date_str + " " + time_str}
+        print appointment_date
 
-    r = {'appointment_date' : appointment_date,
-         'appointment_id' : appt['appointmentid']}
+        r.append({'appointment_date' : appointment_date,
+            'appointment_id' : appt['appointmentid']})
     print r
     return jsonify(result = r)
 
