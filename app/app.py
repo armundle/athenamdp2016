@@ -22,7 +22,7 @@ def bad_request(body=None):
 
 
 TIMELINE = {
-        "summary": "Your OBGYN appointment with Dr. Bonnie Buttercup is scheduled for April 26th 2016 at 11:15 am.",
+        "summary": "Your O-B-G-Y-N appointment with Dr. Bonnie Buttercup is scheduled for April 26th 2016 at 11:15 am.",
         #"appointment_date": {
             #"day": "monday",
             #"date": "2016-05-01 8:30 AM"
