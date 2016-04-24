@@ -1,7 +1,7 @@
 {
     "appointments": [
         {
-            "summary": "Your OBGYN Week 6 appointment with Dr. Bonnie Buttercup is scheduled for May 1st 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 6 appointment with Dr. Bonnie Buttercup is scheduled for May 1st 2016 at 8:30 am.",
             "appointment_date": {
                 "day": "monday",
                 "date": "2016-05-01 8:30 AM"
@@ -31,7 +31,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 10 appointment with Dr. Bonnie Buttercup is scheduled for May 28th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 10 appointment with Dr. Bonnie Buttercup is scheduled for May 28th 2016 at 8:30 am.",
             "appointment_date": {
                 "day": "monday",
                 "date": "2016-05-28 8:30 AM"
@@ -61,7 +61,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 14 appointment with Dr. Bonnie Buttercup is scheduled for June 24th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 14 appointment with Dr. Bonnie Buttercup is scheduled for June 24th 2016 at 8:30 am.",
             "appointment_date": {
                 "day": "monday",
                 "date": "2016-06-24 8:30 AM"
@@ -91,7 +91,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 18 appointment with Dr. Bonnie Buttercup is scheduled for July 21st 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 18 appointment with Dr. Bonnie Buttercup is scheduled for July 21st 2016 at 8:30 am.",
             "week": 18,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -121,7 +121,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 22 appointment with Dr. Bonnie Buttercup is scheduled for August 17th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 22 appointment with Dr. Bonnie Buttercup is scheduled for August 17th 2016 at 8:30 am.",
             "week": 22,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -151,7 +151,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 26 appointment with Dr. Bonnie Buttercup is scheduled for September 13th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 26 appointment with Dr. Bonnie Buttercup is scheduled for September 13th 2016 at 8:30 am.",
             "week": 26,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -181,7 +181,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 28 appointment with Dr. Bonnie Buttercup is scheduled for September 27th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 28 appointment with Dr. Bonnie Buttercup is scheduled for September 27th 2016 at 8:30 am.",
             "week": 28,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -211,7 +211,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 30 appointment with Dr. Bonnie Buttercup is scheduled for October 11th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 30 appointment with Dr. Bonnie Buttercup is scheduled for October 11th 2016 at 8:30 am.",
             "week": 30,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -241,7 +241,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 32 appointment with Dr. Bonnie Buttercup is scheduled for October 25th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 32 appointment with Dr. Bonnie Buttercup is scheduled for October 25th 2016 at 8:30 am.",
             "week": 6,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -271,7 +271,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 34 appointment with Dr. Bonnie Buttercup is scheduled for November 8th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 34 appointment with Dr. Bonnie Buttercup is scheduled for November 8th 2016 at 8:30 am.",
             "week": 34,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -301,7 +301,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 36 appointment with Dr. Bonnie Buttercup is scheduled for November 22nd 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 36 appointment with Dr. Bonnie Buttercup is scheduled for November 22nd 2016 at 8:30 am.",
             "week": 36,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -331,7 +331,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 37 appointment with Dr. Bonnie Buttercup is scheduled for November 29th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 37 appointment with Dr. Bonnie Buttercup is scheduled for November 29th 2016 at 8:30 am.",
             "week": 37,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -361,7 +361,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 38 appointment with Dr. Bonnie Buttercup is scheduled for December 6th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 38 appointment with Dr. Bonnie Buttercup is scheduled for December 6th 2016 at 8:30 am.",
             "week": 38,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -391,7 +391,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 39 appointment with Dr Wendy McDonald is scheduled for December 13th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 39 appointment with Dr Wendy McDonald is scheduled for December 13th 2016 at 8:30 am.",
             "week": 39,
             "timeline": "pregnancy",
             "appointment_date": {
@@ -421,7 +421,7 @@
             ]
         },
         {
-            "summary": "Your OBGYN Week 40 appointment with Dr Wendy McDonald is scheduled for December 20th 2016 at 8:30 am.",
+            "summary": "Your O-B-G-Y-N Week 40 appointment with Dr Wendy McDonald is scheduled for December 20th 2016 at 8:30 am.",
             "week": 40,
             "timeline": "pregnancy",
             "appointment_date": {
