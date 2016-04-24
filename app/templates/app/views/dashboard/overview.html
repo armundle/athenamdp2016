@@ -1,13 +1,39 @@
 <div>
-	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Reports</a>
-	<h2>Overview <small>Why is Ani Theme so awesome?</small></h2>
+	<a ui-sref="timeline" class="pull-right btn btn-primary btn-outline btn-rounded">Timeline</a>
+	<h2>Welcome Bessie! </h2>
 	<div class="jumbotron">
+	<small>To get started, first enter your preferences:</small>
+	<br/><br/>
 		<div class="container">
-			<h1>Welcome!</h1>
-			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
-			<p>
-				<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
-			</p>
+			<form class="simple-form">
+			
+			<label size="20"> General availability:     </label>
+			<select name="days" ng-model="days">
+				<option value="monday" selected>Monday</option>
+				<option value="tuesday">Tuesday</option>
+				<option value="wednesday">Wednesday</option>
+				<option value="thursday">Thursday</option>
+				<option value="friday">Friday</option>
+			</select>
+			&nbsp; &nbsp; &nbsp;<input type="text" value="1:30 PM" size="10"> to <input type="text" value="5:00 PM" size="10">
+			<a href="#">+add new</a>
+			<br/><br/>
+
+			
+			<label size="20">Preferred Provider:         </label>
+			<input type="text" value="Dr. Buttercup" size="20"/>
+			<br/><br/>
+			
+			<label size="20">Preferred Lab:              </label>
+			<input type="text" value="Quest Lab" size="20"/>
+			<br/><br/>
+			
+			<label size="20">Anticipated Birth Hospital: </label>
+			<input type="text" value="Seton Northwest" size="20"/><br/><br/>
+
+			<button ng-click="submit()" class="btn btn-primary" size="20">Submit</button>
+			&nbsp; &nbsp; &nbsp;<a ui-sref="timeline"> Skip for Now </a>
+			</form>
 		</div>
 	</div>
 </div>
