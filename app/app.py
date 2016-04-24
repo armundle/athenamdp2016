@@ -1,8 +1,11 @@
 from flask import Flask, jsonify, render_template, Response, request
 import traceback
-from athena import get_open_appts
+from athena import get_open_appts, book_appointment, get_booked_appointment, reset_appointment
+import json
 
 app = Flask(__name__)
+
+#timeline = json.loads('timeline_sample_1.json')
 
 
 def bad_request(body=None):
@@ -22,8 +25,8 @@ def create_appointment():
     dates = [{'start_time' : {'year': 2016,
                         'month': 04,
                         'day': 24,
-                        'hour': 8,
-                        'minute': 0}
+                        'hour': 11,
+                        'minute': 15}
              },
             {'start_time' : {'year': 2016,
                         'month': 04,
@@ -41,8 +44,28 @@ def home():
     return render_template('dist/index.html')
 
 
+<<<<<<< HEAD
 @app.route('/athena/get-appointment', methods=['GET'])
 def get_appointment():
+=======
+@app.route('/reset', methods=['GET'])
+def reset():
+    return jsonify(result=reset_appointment())
+
+
+@app.route('/book', methods=['GET'])
+def book():
+    return jsonify(result = book_appointment(create_appointment()[0]))
+
+
+@app.route('/booked', methods=['GET'])
+def booked():
+    return jsonify(result = get_booked_appointment())
+
+
+@app.route('/appointment', methods=['GET'])
+def athena():
+>>>>>>> armundle
     appt = create_appointment()
     return jsonify(result=appt)
 
