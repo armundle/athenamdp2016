@@ -1,5 +1,6 @@
 import athenahealthapi
 import datetime
+import calendar
 
 # Setup
 key = '28px28k6z5t5cr9mjj6rr54b'  # clientID
@@ -23,10 +24,23 @@ def extract_time(time):
     m = int(time.split(':')[1])
     return (h*60+m)
 
+
+def format_12(time):
+    h = int(time.split(':')[0])
+    m = int(time.split(':')[1])
+    if h > 12:
+        h = 24 - h
+        suffix = "PM"
+    else:
+        suffix = "AM"
+
+    return (str(h) + ":" + str(m).zfill(2) + " " + suffix)
+
 def get_open_appts(dates):
 #def get_open_appts():
 
     dateformat = '%m/%d/%Y'
+    response_dateformat = '%Y-%m-%d'
 
     open_appts =[]
     for d in dates:
@@ -49,8 +63,16 @@ def get_open_appts(dates):
             patient_delta = 10
             if ((provider_t <= patient_t) and
             ((patient_t + patient_delta) <= (provider_t + provider_delta))):
-                print "yes"
-                open_appts.append({'date': a['date'], 'time': a['starttime']})
+                date = a['date'].split('/')
+                date_unfmt = datetime.datetime(int(date[2]),
+                                               int(date[0]),
+                                               int(date[1]))
+                return_date = date_unfmt.strftime(response_dateformat)
+                day = calendar.day_name[date_unfmt.weekday()]
+                time = a['starttime']
+                return_time = format_12(time)
+                open_appts.append([{'date': str(return_date) + " " + return_time},
+                                  {'day': day}])
 
             #if int(a['starttime'].split(':')[0]) <= d['start']['hour']:
 
